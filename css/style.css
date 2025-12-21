@@ -20,33 +20,33 @@ body.is-locked {
   overflow: hidden;
 }
 
-    .container {
-      max-width: 1200px;
-      margin: 0 auto;
-      padding: 0 24px;
-    }
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 24px;
+}
 
-    .section {
-      padding: 80px 0;
-    }
+.section {
+  padding: 80px 0;
+}
 
-    h1 {
-      font-size: 34px;
-      font-weight: 700;
-      color: #111827;
-      margin: 0 0 16px 0;
-      line-height: 1.2;
-      text-align: left;
-    }
+h1 {
+  font-size: 34px;
+  font-weight: 700;
+  color: #111827;
+  margin: 0 0 16px 0;
+  line-height: 1.2;
+  text-align: left;
+}
 
-    .subtitle {
-      font-size: 20px;
-      color: #6b7280;
-      max-width: 800px;
-      margin-bottom: 60px;
-      line-height: 1.2;
-      text-align: left;
-    }
+.subtitle {
+  font-size: 20px;
+  color: #6b7280;
+  max-width: 800px;
+  margin-bottom: 60px;
+  line-height: 1.2;
+  text-align: left;
+}
 
 /* ===== HEADER ===== */
 
@@ -57,6 +57,9 @@ body.is-locked {
   overflow: hidden;
 }
 
+.header__content__logo{
+  width: 120px;
+}
 /* ===== ФОНОВОЕ ВИДЕО ===== */
 
 .header__video {
@@ -115,10 +118,10 @@ body.is-locked {
 }
 
 .hero__title {
-  font-size: 34px;            
+  font-size: 24px;            
   line-height: 1.4;
-  font-weight: 700;
-
+  font-weight: 600;
+  color: #fff;
   text-transform: uppercase; /* если в макете */
 }
 
@@ -146,6 +149,10 @@ body.is-locked {
 
   border-radius: 4px;
   text-decoration: none;
+}
+
+.hero__stats__logo{
+  width: 40px;
 }
 
 .hero__stats {
@@ -185,21 +192,27 @@ body.is-locked {
 
 /* ===== BURGER ===== */
 
+/* Бургер */
 .burger {
   display: flex;
   flex-direction: column;
   gap: 5px;
-
   background: none;
   border: none;
   padding: 0;
   cursor: pointer;
+  z-index: 15;
 }
 
 .burger span {
   width: 24px;
   height: 2px;
   background: var(--color-white);
+}
+
+/* Если бургер закрывает меню */
+.burger--close span {
+  background: #fff;
 }
 
 /* ===== NAVIGATION ===== */
@@ -237,8 +250,48 @@ body.is-locked {
   padding: 0;
 }
 
-.mobile-item {
+.mobile-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;   /* горизонтальное центрирование */
+  text-align: center;
+  color: #fff;
+  width: 100%;
+}
+
+.mobile-container h1,
+.mobile-container .subtitle {
+  text-align: center;
+  color: #fff;
+  margin: 0 0 26px; 
+  max-width: 450px; /* чтобы текст красиво переносился */
+}
+
+.mobile-container h1 {
+  font-weight: 550;
+}
+
+.mobile-container .subtitle {
+  font-weight: 400;
+  margin-bottom: 28px;
+}
+
+.mobile-item{
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+.mobile-item:first-child {
+  border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* тонкая линия у последнего элемента меню */
+.mobile-item:last-of-type {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* жирная линия при открытом меню */
+.nav--mobile.is-open .mobile-item:last-of-type {
+  border-bottom: 2px solid #fff;
 }
 
 .mobile-item a,
@@ -256,6 +309,27 @@ body.is-locked {
   background: none;
   border: none;
   cursor: pointer;
+}
+
+.mobile-footer {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: space-between; /* лого слева, бургер справа */
+  align-items: center;
+  padding: 12px 20px;
+  background: var(--color-black);
+  box-sizing: border-box;
+  z-index: 20;  /* увеличить, чтобы быть выше подменю */
+  border-top: 4px solid transparent;
+}
+
+/* Логотип */
+.mobile-footer__logo {
+  width: 100px;
+  height: auto;
 }
 
 /* ===== MOBILE SUBMENU ===== */
@@ -276,17 +350,6 @@ body.is-locked {
 .mobile-submenu a {
   font-size: 14px;
   opacity: 1;
-}
-
-/* ===== Бургер ===== */
-.mobile-close {
-  position: absolute;
-  bottom: 20px;
-  left: 20px;
-}
-
-.burger--close span {
-  background: #fff;
 }
 
 /* ===== Подстветка ===== */
@@ -637,7 +700,7 @@ body.is-locked {
 
 .plans-link {
   font-size: 16px;
-  font-weight: 600;
+  font-weight: 500;
   color: #111827;
   text-decoration: underline;
   cursor: pointer;
@@ -851,7 +914,7 @@ body.is-locked {
 /* ===== Шестая страница ===== */
 /* ===== Секция отзывы ===== */
 .reviews {
-  padding: 60px 16px;
+  padding: 80px 16px;
   background-color: #f9f9f9;
 }
 
@@ -867,18 +930,18 @@ body.is-locked {
 .review-card {
   background-color: #fff;
   border-radius: 12px;
-  padding: 24px;
+  padding: 34px;
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 36px;
   box-shadow: 0 4px 10px rgba(0,0,0,0.08);
   position: relative;
 }
 
 /* Логотип компании слева сверху */
 .review-logo {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   object-fit: contain;
   position: absolute;
   top: 16px;
@@ -907,7 +970,7 @@ body.is-locked {
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 16px;
+  gap: 36px;
   margin-top: 20px;
 }
 
@@ -1109,13 +1172,13 @@ body.is-locked {
 }
 
 .webform-form textarea {
-  min-height: 120px;
+  min-height: 160px;
   resize: vertical;
 }
 
 .webform-form input::placeholder,
 .webform-form textarea::placeholder {
-  color: #6b7280;
+  color: #d8d3d3;
 }
 
 /* Чекбокс */
@@ -1154,7 +1217,7 @@ body.is-locked {
   border: none;
   color: #fff;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 500;
   cursor: pointer;
 }
 
@@ -1206,6 +1269,11 @@ body::after {
   background-color: #ffffff;
 }
 
+.footer-socials {
+  height: 50px;
+  width: auto;
+  object-fit: contain;
+}
 
 
 /* ===== DESKTOP HEADER ===== */
