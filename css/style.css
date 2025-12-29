@@ -1,34 +1,46 @@
+/* =====================================================
+   RESET / BASE
+==================================================== */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
 :root {
   --font-main: 'Montserrat', sans-serif;
   --color-black: #000;
   --color-white: #fff;
 }
 
-html {
-  font-family: var(--font-main);
-}
-
 body {
   margin: 0;
-  background: linear-gradient(to bottom, #ffffff, #f9fafb);
+  font-family: var(--font-main);
+  overflow-x: hidden;
   color: #374151;
+  background: linear-gradient(to bottom, #ffffff, #f9fafb);
 }
 
-body.is-locked {
-  position: fixed;
-  width: 100%;
-  overflow: hidden;
+img,
+video {
+  max-width: 100%;
+  display: block;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-  padding: 0 24px;
+a {
+  color: inherit;
+  text-decoration: none;
 }
 
-.section {
-  padding: 80px 0;
+ul {
+  list-style: none;
 }
+
+/* =====================================================
+   GLOBAL TYPOGRAPHY (MOBILE)
+===================================================== */
 
 h1 {
   font-size: 34px;
@@ -37,6 +49,22 @@ h1 {
   margin: 0 0 16px 0;
   line-height: 1.2;
   text-align: left;
+}
+
+/* =====================================================
+   LAYOUT HELPERS
+===================================================== */
+.section {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 40px 0;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  padding: 0 16px;
 }
 
 .subtitle {
@@ -48,140 +76,62 @@ h1 {
   text-align: left;
 }
 
-/* ===== HEADER ===== */
+/* =====================================================
+   HEADER (MOBILE)
+===================================================== */
 
 .header {
   position: relative;
-  min-height: 100vh;
-  color: var(--color-white);
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: linear-gradient(to bottom, rgba(0,0,0,0.7), transparent);
+  padding: 16px 20px;
+  z-index: 10;
   overflow: hidden;
 }
 
-.header__content__logo{
-  width: 120px;
-}
-/* ===== ФОНОВОЕ ВИДЕО ===== */
-
+/* ===== <!-- Фоновое видео --> ===== */
 .header__video {
   position: absolute;
   inset: 0;
-  z-index: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: -1;
 }
 
 .header__video video {
   width: 100%;
   height: 100%;
   object-fit: cover;
+  filter: brightness(0.25);
 }
 
-/* затемнение поверх видеоы */
 .header__video::after {
   content: '';
   position: absolute;
   inset: 0;
-  background: rgba(0, 0, 0, 0.45);
+  z-index: 1;
+  background: rgba(0, 0, 0, 0.4);
 }
-
-/* ===== КОНТЕНТ ШАПКИ ===== */
 
 .header__content {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 16px 20px;
   position: relative;
-  z-index: 2;
-  color: #fff;
-
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  padding: 20px 16px;
+  z-index: 5;  
+  color: rgb(255, 255, 255);
 }
-
-/* ===== HERO ===== */
-.hero {
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-
-  padding: 60px 8px 64px;    /* верх | бока | низ */
-}
-
-.hero__top {
-  padding-left: 2px;
-  padding-right: 2px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 16px;
-
-  max-width: 360px;
-}
-
-.hero__title {
-  font-size: 24px;            
-  line-height: 1.4;
-  font-weight: 600;
-  color: #fff;
-  text-transform: uppercase; /* если в макете */
-}
-
-.hero__text {
-  font-size: 16px;
-  line-height: 1.6;
-  opacity: 0.9; 
-}
-
-.hero__btn {
-  margin-top: 16px;
-
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-
-  padding: 24px 50px;
-  width: fit-content;
-
-  font-size: 14px;
-  font-weight: 600;
-
-  background-color: orange;
-  color: #000;
-
-  border-radius: 4px;
-  text-decoration: none;
-}
-
-.hero__stats__logo{
-  width: 40px;
-}
-
-.hero__stats {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 12px;
-
-  margin-top: 32px;
-}
-
-.stat {
-  padding: 16px 12px;
-
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-}
-
-.stat__number {
-  font-size: 20px;
-  font-weight: 700;
-}
-
-.stat__label {
-  font-size: 12px;
-  opacity: 0.8;
-}
-
 /* ===== ЛОГО ===== */
+.header__content__logo{
+  width: 180px;
+  margin-right: 20px;
+}
 
 .logo {
   color: var(--color-white);
@@ -189,212 +139,238 @@ h1 {
   font-weight: 700;
   font-size: 18px;
 }
-
-/* ===== BURGER ===== */
-
-/* Бургер */
-.burger {
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  background: none;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  z-index: 15;
-}
-
-.burger span {
-  width: 24px;
-  height: 2px;
-  background: var(--color-white);
-}
-
-/* Если бургер закрывает меню */
-.burger--close span {
-  background: #fff;
-}
-
-/* ===== NAVIGATION ===== */
-
+/* ===== <!-- Навигация --> ===== */
 /* desktop меню скрыто на mobile */
-.nav--desktop {
-  display: none;
+.nav {
+    display: none; /* Меню скрыто по умолчанию */
+    position: fixed; /* Фиксируем меню на экране */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: #000; /* Полупрозрачный фон rgba(0, 0, 0, 0.8);*/
+    color: white;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 10;
+    opacity: 0;
+    transform: translateX(-100%);
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
-/* ===== MOBILE MENU ===== */
-
-.nav--mobile {
-  position: fixed;
-  inset: 0;
-
-  background: var(--color-black);
-  color: var(--color-white);
-
-  padding: 80px 20px 20px;
-
-  transform: translateX(-100%);
-  transition: transform 0.3s ease;
-
-  z-index: 3;
+.nav__list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
 }
 
-/* класс будет добавляться через JS */
-.nav--mobile.is-open {
-  transform: translateX(0);
+.nav__item {
+    margin: 20px 0;
 }
 
-.mobile-list {
-  list-style: none;
-  margin: 0;
-  padding: 0;
+.nav__link {
+    font-size: 24px;
+    color: white;
+    text-decoration: none;
+    text-align: center;
+    padding: 10px 20px;
 }
 
-.mobile-container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;   /* горизонтальное центрирование */
-  text-align: center;
-  color: #fff;
-  width: 100%;
+/* Когда меню открыто */
+.nav--open {
+    display: flex;
+    opacity: 1;
+    transform: translateX(0);
 }
 
-.mobile-container h1,
-.mobile-container .subtitle {
-  text-align: center;
-  color: #fff;
-  margin: 0 0 26px; 
-  max-width: 450px; /* чтобы текст красиво переносился */
+.no-scroll {
+    overflow: hidden;
 }
 
-.mobile-container h1 {
-  font-weight: 550;
+.nav__link:hover {
+    background: rgb(235, 122, 30);
+    color: #000;
+}
+/* ===== SUBMENU ===== */
+.nav__item--dropdown .dropdown {
+    display: none; /* Подменю скрыто по умолчанию */
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background-color: rgba(0, 0, 0, 0.9); /* Цвет фона подменю */
+    width: 100%;
+    text-align: left;
 }
 
-.mobile-container .subtitle {
-  font-weight: 400;
-  margin-bottom: 28px;
+.nav__item--dropdown.open .dropdown {
+    display: block; /* Подменю становится видимым */
 }
 
-.mobile-item{
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-.mobile-item:first-child {
-  border-top: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* тонкая линия у последнего элемента меню */
-.mobile-item:last-of-type {
-  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-}
-
-/* жирная линия при открытом меню */
-.nav--mobile.is-open .mobile-item:last-of-type {
-  border-bottom: 2px solid #fff;
-}
-
-.mobile-item a,
-.mobile-item__title {
+.dropdown__item a {
   display: block;
-  width: 100%;
-
-  padding: 16px 0;
-
+  padding: 8px 16px;
+  font-size: 14px;
   color: var(--color-white);
   text-decoration: none;
-  font-size: 16px;
-  text-align: left;
-
-  background: none;
-  border: none;
-  cursor: pointer;
+  transition: background 0.3s, color 0.3s;
 }
 
-.mobile-footer {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  display: flex;
-  justify-content: space-between; /* лого слева, бургер справа */
-  align-items: center;
-  padding: 12px 20px;
-  background: var(--color-black);
-  box-sizing: border-box;
-  z-index: 20;  /* увеличить, чтобы быть выше подменю */
-  border-top: 4px solid transparent;
+.dropdown__item a:hover {
+  background: rgb(235, 122, 30);
+  color: #000;
 }
-
-/* Логотип */
-.mobile-footer__logo {
-  width: 100px;
-  height: auto;
-}
-
-/* ===== MOBILE SUBMENU ===== */
-
-.mobile-submenu {
-  list-style: none;
-  margin: 0;
-  padding-left: 16px;
-
-  display: none;
-}
-
-/* класс для раскрытия (через JS) */
-.mobile-item.is-open .mobile-submenu {
-  display: block;
-}
-
-.mobile-submenu a {
-  font-size: 14px;
-  opacity: 1;
-}
-
-/* ===== Подстветка ===== */
-.mobile-item a:hover {
-    color: rgb(235, 122, 30);}
-.mobile-item__title:hover {
-  color: rgb(199, 75, 26);
-}
-
 /* ===== Стрелка ===== */
-.mobile-item__title {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-
-  width: 100%;
-  padding: 16px 0;
-
-  background: none;
-  border: none;
-  color: #fff;
-  font-size: 16px;
-  text-align: left;
-  cursor: pointer;
-}
-
 .arrow {
   width: 10px;
   height: 6px;
-
   background-color: #fff;
-
-  /* треугольник */
   clip-path: polygon(0 0, 100% 0, 50% 100%);
-
-  /* аккуратное позиционирование */
-  transform: translateY(-1px);
+  display: inline-block; /* Делаем блок строчным, чтобы он был рядом с текстом */
+  margin-left: 8px; /* Отступ между текстом и стрелкой */
   transition: transform 0.25s ease, background-color 0.25s ease;
 }
-
-/* стрелка вверх при открытии */
-.mobile-item.is-open .arrow {
-  transform: translateY(-1px) rotate(180deg);
+/* ===== BURGER ===== */
+.burger {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    z-index: 20; /* Бургер выше всех элементов */
 }
 
+.burger span {
+    width: 30px;
+    height: 3px;
+    background-color: white;
+}
+
+/* Когда меню открыто */
+.nav.open {
+    display: flex; /* Показываем меню */
+}
+
+/* ===== HERO ===== */
+.hero {
+  display: flex;
+  flex-direction: column; /* для мобильных, чтобы элементы шли вниз */
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  height: calc(100vh - 50px); /* Устанавливаем высоту */
+  gap: 24px;
+  padding: 40px 20px;
+  position: relative;
+  z-index: 2;
+}
+
+.hero__left {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  margin-top: 0;
+}
+
+
+.hero__title,
+.hero__text,
+.hero__btn {
+  margin-bottom: 24px; /* Увеличим gap вручную */
+}
+
+.hero__title {
+  font-size: 28px;
+  color: var(--color-white);
+  text-align: center;
+}
+
+.hero__text {
+  font-size: 16px;
+  line-height: 1.6;
+  opacity: 0.9; 
+  color: var(--color-white);
+  text-align: center;
+}
+
+.hero__btn {
+  background: none;
+  border: 2px solid rgb(218, 76, 11);
+  padding: 24px 100px;
+  color: #fff;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 6px;
+  text-decoration: none;
+  display: inline-block;
+  transition: background 0.3s ease;
+  text-align: center;
+}
+
+.hero__btn:hover {
+  background-color: rgb(218, 76, 11);
+  color: #fff;
+}
+
+.hero__stats {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  width: 100%;
+  margin-top: 10px;
+  max-width: 800px;
+  color: var(--color-white);
+}
+
+.stat {
+  padding: 20px;
+  border-radius: 8px;
+  text-align: left;
+  position: relative;
+}
+
+.hero__stats .stat:first-child .stat__number {
+  font-size: 50px; /* Увеличиваем размер номера только для первого элемента */
+}
+
+.hero__stats__logo {
+  width: 70px;
+  margin-left: 0px;
+  display: inline-block; /* Чтобы картинка не выходила за рамки */
+  vertical-align: middle; /* Чтобы выровнять картинку с текстом */
+}
+
+.stat__number {
+  font-size: 30px;
+  font-weight: 700;
+  display: flex;
+  justify-content: left;
+  align-items: left;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  left: 0; /* Изменим на левую часть */
+  top: 0;
+  width: 5px;
+  height: 90%;
+  background-color: rgb(218, 76, 11);
+  border-radius: 4px 0 0 4px; /* Радиус теперь с левой стороны */
+}
+
+.stat__label {
+  font-size: 14px;
+  opacity: 0.8;
+}
 /* ===== Вторая страница ===== */
 /* Фиксированная сетка: всегда 4 колонки (2 ряда по 4 карточки) */
 .services-grid {
@@ -403,17 +379,29 @@ h1 {
   gap: 32px;
 }
 
+.service-title-main{
+  margin-top: 50px;
+}
+
+.service-subtitle-main{
+  font-weight: 500;
+  line-height: 1.3;
+  font-size: 24px;
+  color: #4b5563;
+  margin-bottom: 50px;
+}
+
 .service-card {
   background: white;
   border-radius: 12px;
   padding: 40px 24px;
   text-align: left;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.04);
   transition: all 0.3s ease;
 }
 
 .service-card:hover {
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12);
+  box-shadow: 0 16px 32px rgba(0, 0, 0, 0.08);
   transform: translateY(-4px);
 }
 
@@ -425,6 +413,11 @@ h1 {
   height: 80px; /* для выравнивания по высоте */
 }
 
+.icon-wrapper img{
+  width: 150px;
+  height: 110px;
+}
+
 .placeholder {
   color: #9ca3af;
   font-size: 14px;
@@ -432,8 +425,9 @@ h1 {
 }
 
 .service-title {
-  font-size: 16px;
-  line-height: 1.6;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 1.4;
   color: #4b5563;
 }
 
@@ -446,7 +440,7 @@ h1 {
 }
 
 .page-title {
-  font-size: 32px;
+  font-size: 42px;
   font-weight: 700;
   color: #111827;
   text-align: center;
@@ -454,128 +448,120 @@ h1 {
   line-height: 1.2;
 }
 
-/* Сетка — по умолчанию 1 колонка (мобильные) */
+/* Карточка на мобильных */
 .cards-grid {
   pointer-events: auto;
   display: grid;
   grid-template-columns: 1fr;
-  gap: 18px;
+  gap: 8px;
   margin-bottom: 80px;
 }
 
-/* Карточка на мобильных */
 .card {
   background: #fff;
   border-radius: 12px;
-  padding: 40px 24px 36px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.08);
+  padding: 4px 24px 16px;
+  box-shadow: 2px 2px 6px rgba(0, 0, 0, 0.08);
   transition: all 0.3s ease;
   position: relative;
-  min-height: 180px;
+  min-height: 280px;
+  gap: 28px;
   display: flex;
   flex-direction: column;
 }
 
-.card-number {
-  position: absolute;
-  top: 20px;
-  left: 24px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #8d8d8d;
-  line-height: 1;
-  pointer-events: none;
-}
-
-.card-text {
-  font-size: 20px;
-  font-weight: 450;
-  line-height: 1.4;
-  color: #575b64;
-  flex-grow: 1;
-}
-
-.card-title {
+.card-number{
+  font-weight: 500;
   font-size: 22px;
-  font-weight: 700;
-  color: #111827;
-  margin: 35px 0 14px;
   line-height: 1.4;
+  color: #4b5563;
+}
+.card-title{
+  font-weight: 700;
+  font-size: 28px;
+  color: #0d0d0e;
 }
 
+.card-text{
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 1.4;
+  color: #4b5563;
+  z-index: 2;
+}
+
+/* 8-я карточка на мобильной версии */
 .cards-grid .card:nth-child(8) {
   position: relative;
-  transform: translateY(0px);
-  z-index: 10;
+  transform: translateY(0px); /* Здесь карточка будет сдвигаться вниз */
+  z-index: 10; /* Ставим её на передний план */
 }
 
-/* Иконка  */
+/* Иконка карточки */
 .card-icon {
   position: absolute;
   right: 0;
   bottom: 0;
-  width: 70px;
-  height: 70px;
-  display: flex;
+  width: 90px;
+  height: 90px;
+  display: inline-block;
   align-items: center;
   justify-content: center;
-}
-
-.cards-grid .card:nth-child(5) .card-icon img {
-  transform: translateX(3px);
-}
-
-.cards-grid .card:nth-child(8) .card-icon img {
-  transform: translateY(2px);
+  z-index: 1;
 }
 
 .card-icon img {
   width: 100%;
   height: 100%;
-  object-fit: contain;
+  object-fit: cover;
 }
 
-/* Тёмный блок */
+/* ===== Черный Фон ===== */
 .black-section {
   position: relative;
   background-color: #0f1114;
   color: #fff;
   padding: 180px 16px 100px;
-  margin-top: -350px;          /* подтягиваем вверх */
-  overflow: visible; /* overflow: visible; на будущее для пересечения*/ 
+  margin-top: -350px;
+  overflow: visible;
   z-index: 1;
+  
+}
+/* Картинка в левом нижнем углу */
+.black-image {
+  position: absolute;
+  left: -20px;           /* Сдвигаем картинку влево на 20px */
+  bottom: 0;
+  width: 420px;          /* Подбираем размер под макет */
+  height: 420px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Тень */
+  z-index: 1;
+  transform: translateY(20px);  /* Сдвигаем картинку по вертикали */
+}
+
+.black-image img {
+  width: 100%;            /* Растягиваем картинку по ширине */
+  height: 100%;           /* Растягиваем картинку по высоте */
+  object-fit: cover;      /* Сохраняем пропорции картинки */
+  display: block;
+  transform: none;        /* Убираем трансформацию */
+  backface-visibility: hidden;  /* Иногда убирает странные эффекты */
+  image-rendering: auto;  /* Для четких изображений */
 }
 
 .black-content {
   position: relative;
   z-index: 2;
-  padding-bottom: 360px; /* Растояние до картинки место под картинку, */
-}
-
-.black-image {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-
-  width: 420px;     /* подберите под макет */
-  height: 420px;
-
-  border-radius: 16px;
-  overflow: hidden;
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.6);
-  z-index: 1;
-
-  transform: translateY(80px);
-}
-
-.black-image img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  display: block;
-  transform: none;
-  backface-visibility: hidden; /* иногда убирает странный эффект */
-  image-rendering: auto;
+  padding-bottom: 460px; /* Расстояние до картинки */
+  max-width: 600px; /* Ограничиваем ширину контейнера */
+  gap: 30px;
+  margin-left: 30px; /* Отступ слева от контента */
+  margin-top: 0;
+  display: flex;
+  flex-direction: column; /* Мобайл: текст в столбик */
+  align-items: flex-start; /* Выровнять текст по левому краю */
 }
 
 .black-title {
@@ -583,49 +569,56 @@ h1 {
   font-weight: 700;
   line-height: 1.2;
   margin-bottom: 20px;
+  margin-top: 20px;
+  text-align: left;
+}
+
+.text-block::before {
+  content: '';
+  position: absolute;
+  left: 0; /* Изменим на левую часть */
+  top: 0;
+  width: 4px;
+  height: 100%;
+  background-color: rgb(218, 76, 11);
+  border-radius: 4px 0 0 4px; /* Радиус теперь с левой стороны */
 }
 
 .text-blocks {
   display: grid;
-  gap: 50px;
+  gap: 30px;
+  grid-template-columns: 1fr; /* Для мобильных — 1 колонка */
+}
+
+.highlight-link {
+  color: rgb(218, 76, 11);  /* Красный цвет */
+  font-weight: 700;  /* Сделать текст жирным */
+  text-decoration: none;  /* Убираем подчеркивание */
 }
 
 .text-block {
-  padding-left: 0;
-  border-left: none;
-  text-align: left;
-}
-
-.text-block-title {
-  font-size: 19px;
-  font-weight: 600;
-  color: #ff5722;
-  margin-bottom: 14px;
-}
-
-.text-block-content {
-  font-size: 16px;
+  position: relative;
+  padding-left: 15px;  /* Увеличиваем отступ для полоски */
+  text-align: left; /* Выравниваем текст по левому краю */
+  font-size: 20px;
   line-height: 1.7;
   color: #e5e7eb;
+  max-width: 300px; /* Ограничиваем ширину текста */
 }
-/* ===== чЕТВЕРТАЯ страница ===== */
+/* ===== Четвертая страница ===== */
 /* ===== Секция Тарифы ===== */
 .plans {
   padding: 30px 0px;
   background-color: #f9f9f9;
 }
 
-.container {
-  max-width: 100%;
-  margin: 0 auto;
-}
-
 /* Заголовок */
 .plans-title {
   text-align: center;
-  font-size: 28px;
+  font-size: 34px;
   font-weight: 700;
   margin-bottom: 20px;
+  margin-top: 90px;
   color: #111827;
 }
 
@@ -641,7 +634,7 @@ h1 {
 .plan-card {
   background-color: #fff;
   border-radius: 12px;
-  padding: 24px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -652,10 +645,22 @@ h1 {
 
 /* Название тарифа */
 .plan-name {
-  font-size: 22px;
-  font-weight: 600;
-  color: #ff5722;
-  margin-bottom: 20px;
+  font-size: 24px;
+  margin-top: 16px;
+  font-weight: 800;
+  color: rgb(243, 83, 20);
+  margin-bottom: 16px;
+  position: relative;
+}
+
+.plan-name::after {
+  content: '';
+  position: absolute;
+  bottom: -20px;  /* Отступ от текста */
+  left: 0;
+  width: 100%;
+  height: 2px;  /* Толщина полоски */
+  background-color: #d1d5db; /* Серая полоска */
 }
 
 /* Описание */
@@ -664,20 +669,46 @@ h1 {
   line-height: 1.6;
   color: #575b64;
   flex-grow: 1;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
+  margin-top: 40px;
+  padding-left: 0px;
+}
+
+.plan-description li {
+  position: relative;
+  margin-top: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  line-height: 1.6;
+  color: #575b64;
+  margin-bottom: 10px; /* Отступ между элементами списка */
+  padding-left: 30px; /* Место для галочки */
+}
+
+.plan-description li::before {
+  content: '✓';  /* Красная галочка */
+  position: absolute;
+  left: 0;
+  top: 0;
+  font-size: 20px;  /* Размер галочки */
+  color: #f35314;  /* Красный цвет галочки */
 }
 
 /* Кнопка */
 .plan-button {
   align-self: center;
-  padding: 12px 108px;
-  font-size: 16px;
-  font-weight: 600;
-  border: 2px solid #ff5722;
+  padding: 24px 100px;
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 500;
+  border: 3px solid #ff5722;
   border-radius: 8px;
   background-color: transparent;
   color: #ff5722;
   cursor: pointer;
+  text-align: center;
+  white-space: nowrap;
+  box-sizing: border-box;
   transition: background-color 0.3s, color 0.3s;
 }
 
@@ -693,13 +724,15 @@ h1 {
 }
 
 .plans-footer p {
-  font-size: 16px;
-  color: #111827;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 1.4;
+  color: #5f6977;
   margin-bottom: 12px;
 }
 
 .plans-link {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 500;
   color: #111827;
   text-decoration: underline;
@@ -717,25 +750,22 @@ h1 {
   background-color: #f9f9f9;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 /* Заголовки */
 .team-title {
   text-align: left;
   font-size: 28px;
   font-weight: 700;
   margin-bottom: 30px;
+  margin-top: 40px;
   color: #111827;
 }
 
 .team-subtitle {
   text-align: left;
-  font-size: 24px;
+  font-size: 36px;
   font-weight: 700;
-  margin: 50px 0 20px;
+  margin-top: 120px;
+  text-align: center;
   color: #111827;
 }
 
@@ -743,7 +773,7 @@ h1 {
 .team-grid {
   display: flex;
   flex-direction: column; /* мобильная версия: колонка */
-  gap: 20px;
+  gap: 16px;
   margin-bottom: 40px;
   align-items: center;    /* центрируем по ширине */
 }
@@ -757,25 +787,26 @@ h1 {
   background: none;           /* без фона */
   box-shadow: none;           /* без теней */
   width: 100%;           /* на мобильных 100% ширины */
-  max-width: 200px;           /* ограничиваем максимальную ширину */
+  max-width: 300px;           /* ограничиваем максимальную ширину */
 }
 
-.team-card-img {
-  width: 60px;                /* размер картинки */
-  height: 60px;
+.team-card-image {
+  max-width: 200px;
+  height: 120px;
   object-fit: contain;
   margin-bottom: 8px;
 }
 
 .team-card-name {
-  font-size: 18px;
-  font-weight: 600;
-  color: #000; /* красный */
+  font-size: 38px;
+  font-weight: 700;
+  color: #000;
   margin-bottom: 12px;
 }
 
 .team-card-description {
-  font-size: 14px;
+  font-size: 20px;
+  font-weight: 500;
   color: #575b64;
 }
 
@@ -783,34 +814,43 @@ h1 {
 .members-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* две колонки */
-  gap: 20px;
-  justify-content: space-between; /* равномерное распределение */
-  margin-bottom: 40px;
+  gap: 10px;
+  justify-content: center; /* Центрируем все элементы в grid */
+  align-items: start; /* Центрируем содержимое по вертикали */
+  margin-bottom: 0px;
+  padding: 0;
 }
 
 .member-card {
-  text-align: center;
+  text-align: left;
   padding: 16px;
-  background-color: #fff;
+  background-color: transparent; /* Убираем фон */
+  box-shadow: none; /* Убираем тени */
+  display: flex;
+  flex-direction: column;
+  width: 100%;
 }
 
 .member-photo {
   width: 100%;
-  max-width: 200px;
-  border-radius: 50%;
-  object-fit: cover;
+  max-width: 200px; /* Ограничиваем ширину картинки */
+  height: 200px; /* Высота будет также 200px, чтобы картинка была квадратной */
+  object-fit: cover; /* Сохраняем пропорции картинки, без растягивания */
   margin-bottom: 12px;
+  border-radius: 0; /* Убираем закругления */
 }
 
 .member-name {
-  font-size: 16px;
+  font-size: 22px;
   font-weight: 700;
   margin-bottom: 8px;
   color: #111827;
+  white-space: nowrap;
 }
 
 .member-description {
-  font-size: 14px;
+  font-size: 18px;
+  font-weight: 500;
   color: #575b64;
 }
 
@@ -821,9 +861,9 @@ h1 {
 }
 
 .team-button {
-  padding: 12px 28px;
-  font-size: 16px;
-  font-weight: 600;
+  padding: 12px 60px;
+  font-size: 20px;
+  font-weight: 500;
   border: 1px solid #000;
   border-radius: 8px;
   background-color: transparent;
@@ -843,16 +883,11 @@ h1 {
   background-color: #f9f9f9;
 }
 
-.container {
-  max-width: 1200px;
-  margin: 0 auto;
-}
-
 .cases-title {
   text-align: center;
   font-size: 32px;
   font-weight: 600;
-  margin-bottom: 10px;
+  margin-bottom: 30px;
   color: #111827;
 }
 
@@ -895,7 +930,7 @@ h1 {
   bottom: 20px;      /* поднят чуть выше нижнего края */
   left: 2px;
   right: 12px;       /* растягиваем по ширине */
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 550;  /* чуть жирнее */
   color: #fff;
   line-height: 1.4;
@@ -905,7 +940,7 @@ h1 {
   position: absolute;
   bottom: -4px;
   left: 2px;
-  font-size: 12px;
+  font-size: 16px;
   font-weight: 400;
   color: #fff;
   opacity: 0.8;
@@ -920,9 +955,10 @@ h1 {
 
 .reviews-title {
   text-align: center;
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 700;
   margin-bottom: 40px;
+  margin-top: -20px;
   color: #111827;
 }
 
@@ -953,8 +989,8 @@ h1 {
   font-size: 16px;
   font-weight: 600;
   color: #111827;
-  text-align: center;
-  margin-top: 40px; /* чтобы не налезал на логотип */
+  text-align: left;
+  margin-top: 70px; /* чтобы не налезал на логотип */
 }
 
 /* Основной текст отзыва (светлый) */
@@ -963,29 +999,83 @@ h1 {
   font-weight: 400;
   color: #6b7280; /* светлый текст */
   text-align: center;
+  margin-bottom: 20px;
+}
+
+.review-text::after {
+  content: '';
+  display: block;
+  height: 2px;
+  background-color: #d1d5db; /* светло-серый цвет */
+  margin: 16px 0; /* отступы сверху и снизу */
 }
 
 /* Пагинация */
 .review-pagination {
+  font-size: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 36px;
-  margin-top: 20px;
+  margin-top: 0px;
+  gap: 16px;
 }
 
-.review-prev,
+.review-page.total{
+  font-size: 34px;
+  font-weight: 300; /* Снижаем жирность номера страницы */
+  color: #a1a1a1; /* Светлый цвет для номера страницы */
+}
+
+.review-page.current {
+  font-size: 34px;
+  font-weight: 500; /* Снижаем жирность номера страницы */
+  color: #111827; /* Темный цвет для текущей страницы */
+}
+
+/* Стрелка влево */
+.review-prev {
+  background: none;
+  border: none;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: relative;
+}
+
+.review-prev::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-right: 12px solid #111827; /* Контур стрелки вправо */
+  transform: translate(-50%, -50%);
+}
+
+/* Стрелка вправо */
 .review-next {
   background: none;
   border: none;
-  font-size: 20px;
   cursor: pointer;
+  width: 36px;
+  height: 36px;
+  position: relative;
 }
 
-.review-page {
-  font-size: 14px;
-  font-weight: 500;
-  color: #111827;
+.review-next::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-top: 10px solid transparent;
+  border-bottom: 10px solid transparent;
+  border-left: 12px solid #111827; /* Контур стрелки влево */
+  transform: translate(-50%, -50%);
 }
 /* ===== Седьмая страница ===== */
 /* ===== Секция Партнеры ===== */
@@ -999,13 +1089,16 @@ h1 {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
+  color: #000;
 }
 
 .partners-text {
-  font-size: 16px;
+  font-size: 20px;
+  font-weight: 600;
   line-height: 1.6;
   color: #6b7280;
   margin-bottom: 50px;
+  text-align: left;
 }
 
 .partners-slider {
@@ -1031,8 +1124,8 @@ h1 {
 }
 
 .partners-track img {
-  height: 50px;
-  width: auto;
+  height: 90px;
+  width: 90px;
   object-fit: contain;
 }
 /* Анимации */
@@ -1057,11 +1150,12 @@ h1 {
 /* ===== Секция FAQ ===== */
 .faq {
   padding: 80px 16px;
+  color: #000;
 }
 
 .faq-title {
   text-align: center;
-  font-size: 32px;
+  font-size: 34px;
   font-weight: 700;
   margin-bottom: 20px;
 }
@@ -1075,43 +1169,55 @@ h1 {
 /* Общий стиль вопросов */
 .faq-item {
   padding: 18px 20px;
-  font-size: 16px;
-  font-weight: 700;
-  color: #111827;
+  font-size: 28px;
+  font-weight: 800;
+  text-align: left;
+  color: #000;
+  display: flex;  /* Используем flex для выравнивания */
+  flex-direction: row;
+  gap: 10px;
 }
 
-/* Первый вопрос — рамка */
-.faq-item--highlight {
-  border: 2px solid #ff5722;
+/* Первый вопрос — рамка и вертикальное выравнивание */
+.faq-item--highlight{
+  border: 4px solid #ff5722;
+  flex-direction: column;  /* Для первого вопроса — вертикальное выравнивание */
+}
+
+.faq-item--highlight .faq-question {
+  color: #ff5722;  /* Красный цвет для текста первого вопроса */
 }
 
 /* Номер вопроса */
 .faq-number {
-  margin-right: 10px;
   color: #a8a5a4;
   font-weight: 700;
+  font-size: 20px;
+  margin-top: 5px;
 }
 
 /* Контейнер вопроса у первого */
 .faq-question {
-  color: #c74d24;
+  color: #000;
   display: flex;
-  align-items: flex-start;
+  align-items: flex-start;  /* Выравнивание по верхнему краю */
+  gap: 10px;  /* Пространство между номером и текстом */
 }
 
 /* Доп. текст под первым вопросом */
 .faq-description {
   margin-top: 10px;
-  font-size: 15px;
-  font-weight: 400; /* НЕ жирный */
-  line-height: 1.6;
+  font-size: 25px;
+  font-weight: 500; /* НЕ жирный */
+  line-height: 1.3;
   color: #6b7280;
+  padding-left: 22px;
 }
 
-/* ===== Девятаястраница ===== */
+/* ===== Девятая страница ===== */
 /* ===== Форма ===== */
 .webform {
-  background-color: #0f1114;
+  background-color: #080808;
   color: #fff;
   padding: 80px 16px;
 }
@@ -1119,30 +1225,42 @@ h1 {
 .webform-inner {
   max-width: 480px;
   margin: 0 auto;
-  text-align: center;
+  text-align: left;
 }
 
 .webform-title {
   font-size: 32px;
   font-weight: 700;
   margin-bottom: 20px;
+  margin-top: -26px;
+  text-align: center;
 }
 
 .webform-text {
-  font-size: 16px;
+  font-size: 20px;
   line-height: 1.6;
   color: #9ca3af;
   margin-bottom: 30px;
+  text-align: justify;
 }
 
 .webform-contacts {
   margin-bottom: 40px;
 }
 
-.webform-phone,
-.webform-email {
-  display: block;
-  font-size: 18px;
+.webform-phone, .webform-email {
+  display: flex;
+  align-items: center;
+}
+
+.webform-icon {
+  width: 30px;  /* Установите нужный размер */
+  height: auto;
+  margin-right: 8px;  /* Отступ между иконкой и текстом */
+}
+
+.webform-phone {
+  font-size: 28px;
   font-weight: 600;
   color: #fff;
   text-decoration: none;
@@ -1150,8 +1268,12 @@ h1 {
 
 .webform-email {
   margin-top: 8px;
-  font-size: 16px;
+  font-size: 18px;
   color: #9ca3af;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;  /* Подчеркнут email */
+  text-decoration-color: #b8b8b8; /* Цвет подчеркивания */
 }
 
 /* Форма */
@@ -1159,16 +1281,19 @@ h1 {
 .webform-form {
   display: flex;
   flex-direction: column;
-  gap: 16px;
+  gap: 10px;
+  border-radius: 10px;
 }
 
 .webform-form input,
 .webform-form textarea {
   background: transparent;
   border: 1px solid #374151;
-  padding: 14px 16px;
+  padding: 20px 22px;
   color: #fff;
-  font-size: 15px;
+  font-size: 18px;
+  font-weight: 500;
+  border-radius: 10px;
 }
 
 .webform-form textarea {
@@ -1186,39 +1311,56 @@ h1 {
 .webform-checkbox {
   display: flex;
   align-items: flex-start;
-  gap: 10px;
-  font-size: 14px;
+  gap: 12px;
+  font-size: 16px;
+  font-weight: 500;
   color: #9ca3af;
   text-align: left;
+  margin-top: 10px;
 }
 
 .webform-checkbox input {
+  width: 48px;
+  font-size: 46px;
   margin-top: 4px;
+}
+
+/* Ссылка "обработка персональных данных" */
+.privacy-link {
+  color: #ff5722;  /* Красный цвет для ссылки */
+}
+
+.privacy-link:hover {
+  color: #d84d1f;  /* Цвет ссылки при наведении */
 }
 
 /* Капча-заглушка */
 
 .webform-captcha {
-  height: 60px;
+  height: 90px;
   border: 1px dashed #374151;
   display: flex;
   align-items: center;
   justify-content: center;
   color: #6b7280;
   font-size: 14px;
+  margin-top: 10px;
 }
 
 /* Кнопка */
 
 .webform-button {
   margin-top: 10px;
+  margin-bottom: 30px;
   padding: 16px;
+  height: 70px;
   background-color: #ff5722;
   border: none;
   color: #fff;
   font-size: 16px;
   font-weight: 500;
   cursor: pointer;
+  border-radius: 10px;
 }
 
 .webform-button:hover {
@@ -1236,29 +1378,38 @@ h1 {
 
 /* Футер */
 .footer {
-  text-align: center;
+  text-align: left;
   padding-bottom: 40px;
 }
 
 /* Соцсети */
 .footer-socials {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
+  display: flex;  /* Используем flex для выравнивания */
+  justify-content: space-evenly;  /* Выравнивание по центру */
+  gap: 0px;
   margin-bottom: 20px;
+  text-align: justify;
 }
 
 .footer-social {
-  width: 36px;
-  height: 36px;
-  border: 1px solid #374151;
   display: inline-block;
+  width: auto;  /* Убираем фиксированную ширину для контейнера */
+  height: auto; /* Убираем фиксированную высоту */
+}
+
+.footer-social img {
+  width: 90px;
+  height: 60px;
+  object-fit: contain; /* Картинка растягивается, чтобы полностью заполнить квадрат */
+  object-position: center;  /* Центрируем изображение */
 }
 
 /* Текст футера */
 .footer-text {
-  font-size: 13px;
+  font-size: 20px;
+  font-weight: 500;
   color: #9ca3af;
+  text-align: center;
 }
 
 /* Белый фон под футером */
@@ -1268,50 +1419,410 @@ body::after {
   height: 40px;
   background-color: #ffffff;
 }
-
-.footer-socials {
-  height: 50px;
-  width: auto;
-  object-fit: contain;
-}
-
-
 /* ===== DESKTOP HEADER ===== */
-@media (min-width: 1440px) {
+@media (min-width: 1024px) {
+  /* ===== Первая страница ===== */
+/* -----------------------------
+     CONTAINER
+  ------------------------------ */
 
-  /* скрываем бургер */
+  .container {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+  .section {
+    padding: 80px 24px;
+  }
+
+  h1 {
+    font-size: 48px;
+  }
+
+  /* -----------------------------
+     HEADER
+  ------------------------------ */
+  .header__content {
+    justify-content: space-between;
+    width: 100%;
+    padding: 40px;
+    margin-top: 20px;
+  }
+
+  .header__content__logo {
+    width: 320px;
+  }
+
   .burger {
     display: none;
   }
 
-  /* показываем desktop-меню */
-  .nav--desktop {
-    display: block;
+  .desktop-nav {
+    display: flex;
+    gap: 32px;
   }
 
-  /* убираем мобильное меню */
-  .nav--mobile {
-    display: none;
+  .desktop-nav a {
+    font-size: 14px;
+    opacity: 0.8;
+    transition: 0.3s;
   }
 
-  /* выравнивание шапки */
-  .header__content {
-    padding: 32px 40px;
+  .desktop-nav a:hover {
+    opacity: 1;
+  }
+  /* ===== <!-- Навигация --> ===== */
+    .burger {
+        display: none; /* Скрываем бургер на десктопе */
+    }
+
+    .nav {
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        opacity: 1;
+    }
+
+    .nav__item {
+        margin: 0 50px;
+        position: relative;
+    }
+
+    .nav__link {
+        font-size: 18px;
+        max-width: 200px;
+        display: block;
+    }
+
+    /* Подменю всегда видно на десктопе */
+    .nav__item--dropdown .dropdown {
+        display: block;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: rgba(0, 0, 0, 0.9);
+    }
+
+    .dropdown__item a {
+        padding: 10px 20px;
+        font-size: 18px;
+        color: white;
+    }
+
+    .dropdown__item a:hover {
+        background-color: rgb(235, 122, 30);
+        color: #000;
+    }
+  /* -----------------------------
+     HERO
+  ------------------------------ */
+  .hero {
+    flex-direction: row; /* Переводим элементы в строку на десктопе */
+    justify-content: space-between; /* Разделяем на две части */
+    text-align: left;
+    width: 60%;
+  }
+
+.hero__title,
+.hero__text,
+.hero__btn {
+  text-align: left;
+}
+
+  .hero__left {
+    text-align: left;
+    width: 60%;
+  }
+  
+  .hero__title,
+  .hero__text {
+    margin-left: 0;
+  }
+
+  .hero__stats {
+    display: grid;
+    width: 40%;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 16px;
+    width: 100%;
+  }
+  
+  .hero__stats .stat {
+  padding: 30px; /* Увеличиваем внутренний отступ */
+}
+
+  .hero__title {
+    font-size: 48px;
+  }
+
+  .hero__text {
+    font-size: 20px;
+    margin-left: -10px;
+  }
+
+  .hero__btn {
+    margin-top: 16px;
+    padding: 16px 200px;
+    font-size: 20px;
+  }
+
+  .hero__btn:hover {
+    background-color: #e07b00;
+  }
+
+  .stat {
+    padding: 20px;
+    border-radius: 8px;
+    text-align: center;
+    position: relative;
+    width: 100%; /* Занимаем всю ширину колонки */
+  }
+  
+  .stat__label {
+    font-size: 14px;
+  }
+
+  .stat__number {
+    font-size: 24px;
+    margin-right: 10px;
+  }
+
+  .hero__stats__logo {
+    width: 80px;
+  }
+  /* -----------------------------
+     CONTENT BLOCKS
+  ------------------------------ */
+
+  .block {
+    flex-direction: row;
+    align-items: center;
+    gap: 60px;
+  }
+
+  .block.reverse {
+    flex-direction: row-reverse;
+  }
+
+  .block-media {
+    flex: 1;
+  }
+
+  .block-text {
+    flex: 1;
   }
 
   .services-grid {
     grid-template-columns: repeat(4, 1fr); /* на планшетах и десктопах — 4 колонки */
   }
-
-  .black-content {
-    grid-template-columns: 1fr 1fr;
-    text-align: left;
-    gap: 100px;
+/* ===== Третья страница  ===== */
+  .cards-grid {
+    grid-template-columns: repeat(4, 1fr); /* Четыре колонки на ПК */
+    gap: 30px;
   }
 
-  .black-image {
-    width: 540px;           /* фиксированный размер на десктопе */
-    height: 540px;
-    order: 0;               /* слева от текста */
+  /* Общие стили для карточек */
+  .cards-grid .card {
+    position: relative;
+    z-index: 2; /* Все карточки будут в одном слое */
+  }
+
+/* ===== Тёмный блок ===== */
+  /* Смещаем содержимое вправо */
+  /* Для контейнера с контентом */
+  .black-content {
+    margin-left: 1100px; /* Сдвигаем контент вправо */
+    margin-top: 200px;
+    margin-bottom: -200px;
+    display: grid; /* Используем grid для размещения блоков */
+    gap: 30px; /* Отступ между блоками */
+    max-width: 600px; /* Чтобы не было ограничений по ширине */
+    justify-content: center;
+    text-align: center;
+    position: relative;
+  }
+
+  .text-block {
+    max-width: none; /* Убираем ограничение ширины для блоков */
+    padding-left: 15px; /* Добавляем отступ для полоски */
+  }
+
+  .black-title {
+    font-size: 40px; /* Увеличиваем размер шрифта для ПК */
+  }
+
+  .text-blocks {
+    grid-template-columns: 1fr 1fr; /* Два столбца для текста */
+}
+.black-image {
+  position: absolute;
+  left: -20px;           /* Сдвигаем картинку влево на 20px */
+  bottom: 0;
+  width: 650px;          /* Подбираем размер под макет */
+  height: 620px;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3); /* Тень */
+  z-index: 1;
+  transform: translateY(20px);  /* Сдвигаем картинку по вертикали */
+}
+/* ===== Тарифы ===== */
+  .plans-grid {
+    grid-template-columns: 1fr 1fr 1fr; /* Три колонки для тарифов на ПК */
+    gap: 30px;
+    align-items: center; /* Выравниваем по вертикали */
+  }
+
+  /* Центральный тариф (выделение) */
+  .plan-card:nth-child(2) {
+    transform: scale(1.1); /* Увеличиваем размер центрального тарифа */
+    z-index: 10; /* Центрируем и поднимаем на передний план */
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15); /* Добавляем тень для эффекта "близости" */
+  }
+
+  /* Размеры и стили для карточек на ПК */
+  .plan-card {
+    margin-top: 40px;
+    max-width: 350px;
+    padding: 24px;
+    transition: transform 0.3s, box-shadow 0.3s;
+  }
+
+  .plan-name {
+    font-size: 28px; /* Увеличиваем размер текста для ПК */
+  }
+
+  .plan-price {
+    font-size: 22px;
+    font-weight: 700;
+  }
+
+  .plan-description {
+    font-size: 18px;
+    line-height: 1.6;
+  }
+
+  .plan-button {
+    font-size: 18px;
+    padding: 20px 60px;
+    border: 3px solid #ff5722;
+    background-color: transparent;
+    color: #ff5722;
+  }
+/* ===== Команда ===== */
+  .team-grid {
+    flex-direction: row;  /* Для ПК: элементы в строку */
+    justify-content: center;  /* Центрируем элементы по горизонтали */
+    gap: 30px;  /* Добавляем отступы между элементами */
+  }
+
+  .team-card {
+    width: auto;           /* Убираем 100% ширину, чтобы карточки располагались в строку */
+    max-width: none;       /* Убираем ограничение по максимальной ширине */
+  }
+  .team-subtitle{
+    margin-bottom: 50px;
+  }
+  .members-grid {
+    grid-template-columns: repeat(3, 1fr); /* 3 колонки для ПК */
+  }
+  .team-button{
+    margin-top: 30px;
+  }
+  .review-comment{
+    max-width: 500px;
+  }
+  .faq-item {
+    margin-left: 360px;
+    margin-right: 360px;
+  }
+/* ===== Кейсес ===== */
+  .cases-grid {
+    grid-template-columns: repeat(3, 1fr); /* 2 колонки на первой строке */
+    gap: 20px; /* Расстояние между картинками */
+    grid-template-rows: auto auto;
+  }
+
+.case-image {
+  width: 100%;
+  height: auto; /* Сохраняем пропорции картинки */
+  object-fit: contain; /* Изображение обрезается, если оно не подходит */
+}
+  .case-card:nth-child(1),
+  .case-card:nth-child(2) {
+    grid-column: span 1; /* Для первой строки 2 колонки */
+  }
+
+  /* Четвертая и пятая картинки будут в одной строке */
+  .case-card:nth-child(3),
+  .case-card:nth-child(4),
+  .case-card:nth-child(5) {
+    grid-column: span 1; /* Занимают одну колонку */
+  }
+
+/* Проверить */ 
+самый низ
+  body::after {
+  content: none;
+  height: none;
+  background-color: none;
+}
+}
+
+/* ===== FIX: menu behaviour (desktop + mobile) ===== */
+/* Desktop: show menu inline (cancel off-canvas transform) */
+@media (min-width: 1024px){
+  .nav{
+    position: relative;
+    transform: none !important;
+    opacity: 1 !important;
+    width: auto;
+    height: auto;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    top: auto;
+    left: auto;
+  }
+  .nav__list{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 0;
+    height: auto;
+    padding: 0;
+  }
+  /* Desktop dropdown: hidden by default, shown on hover or when JS adds .open */
+  .nav__item--dropdown{ position: relative; }
+  .nav__item--dropdown .dropdown{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    z-index: 999;
+  }
+  .nav__item--dropdown:hover .dropdown,
+  .nav__item--dropdown.open .dropdown{
+    display: block;
+  }
+}
+
+
+/* ===== FIX: mobile submenu should expand inline (not absolute) ===== */
+@media (max-width: 1023px){
+  .nav__item--dropdown{
+    position: relative;
+    width: 100%;
+  }
+  .nav__item--dropdown .dropdown{
+    position: static;     /* important: inline flow under parent item */
+    top: auto;
+    left: auto;
+    width: 100%;
+    background-color: transparent; /* keep same black menu background */
+    padding-left: 16px;
+    margin-top: 10px;
   }
 }

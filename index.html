@@ -15,214 +15,130 @@
 </head>
 <body>
   <!-- Шапка -->
-    <header class="header">
-        <div class="header__video">
-            <video
-                src="video/video.mp4"
-                autoplay
-                muted
-                loop
-                playsinline
-            ></video>
-        </div>
+  <header class="header">
+    <!-- Фоновое видео -->
+    <div class="header__video">
+      <video
+        src="video/video.mp4"
+        autoplay
+        muted
+        loop
+        playsinline
+      ></video>
+    </div>
+    <!-- Навигация -->
+    <div class="header__content">
+        <!-- Логотип -->
+        <img src="images/end2.svg" alt="Logo" class="header__content__logo">
+         <!-- Меню -->
+        <nav class="nav nav--mobile">
+            <ul class="nav__list">
 
-        <div class="header__content container">
+                <li class="nav__item">
+                    <a href="#" class="nav__link">ПОДДЕРЖКА DRUPAL</a>
+                </li>
 
-            <!-- Логотип -->
-            <img src="images/end2.svg" alt="Logo" class="header__content__logo">
-
-            <!-- Кнопка мобильного меню -->
-            <button class="burger" aria-label="Открыть меню">
-                <span></span>
-                <span></span>
-                <span></span>
-            </button>
-
-            <!-- Навигация (desktop) -->
-            <nav class="nav nav--desktop">
-                <ul class="nav__list">
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">ПОДДЕРЖКА DRUPAL</a>
-                    </li>
-
-                    <!-- Первый пункт с подменю -->
-                    <li class="nav__item nav__item--dropdown">
-                        <a href="#" class="nav__link">АДМИНИСТРИРОВАНИЕ</a>
-
-                        <ul class="dropdown">
+                <li class="nav__item nav__item--dropdown">
+                    <a href="#" class="nav__link">
+                        АДМИНИСТРИРОВАНИЕ
+                        <div class="arrow"></div>
+                    </a>
+                    <ul class="dropdown">
                         <li class="dropdown__item"><a href="#">МИГРАЦИЯ</a></li>
                         <li class="dropdown__item"><a href="#">БЭКАПЫ</a></li>
                         <li class="dropdown__item"><a href="#">АУДИТ БЕЗОПАСТНОСТИ</a></li>
                         <li class="dropdown__item"><a href="#">ОПТИМИЗАЦИЯ СКОРОСТИ</a></li>
                         <li class="dropdown__item"><a href="#">ПЕРЕЕЗД НА HTTPS</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">ПРОДВИЖЕНИЕ</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">РЕКЛАМА</a>
-                    </li>
-
-                    <!-- Второй пункт с подменю -->
-                    <li class="nav__item nav__item--dropdown">
-                    <a href="#" class="nav__link">О НАС</a>
-
-                        <ul class="dropdown">
-                            <li class="dropdown__item"><a href="#">КОМАНДА</a></li>
-                            <li class="dropdown__item"><a href="#">DRUPALGIVE</a></li>
-                            <li class="dropdown__item"><a href="#">БЛОГ</a></li>
-                            <li class="dropdown__item"><a href="#">КУРСЫ DRUPAL</a></li>
-                        </ul>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">ПРОЕКТЫ</a>
-                    </li>
-
-                    <li class="nav__item">
-                        <a href="#" class="nav__link">КОНТАКТЫ</a>
-                    </li>
-                </ul>
-            </nav>
-
-            <div class="hero">
-
-            <!-- Верхняя часть -->
-            <div class="hero__top">
-                
-                <h1 class="hero__title">
-                Поддержка<br>
-                Сайтов на DRUPAL
-                </h1>
-
-                <p class="hero__text">
-                Сопровождение и поддержка сайтов<br>
-                на CMS DRUPAL любых версий и запущенности
-                </p>
-
-                <a href="#tariffs" class="hero__btn">
-                ТАРИФЫ
-                </a>
-            </div>
-
-            <!-- Нижняя часть -->
-            <div class="hero__stats">
-
-                <div class="stat">
-                <span class="stat__number">#1<img src="images/end1.png" alt="Logo" class="hero__stats__logo"></span>
-                <span class="stat__label">Drupal-разработчик в России по версии Рейтинга Рунета</span>
-                </div>
-
-                <div class="stat">
-                <span class="stat__number">3+</span>
-                <span class="stat__label">средний опыт специалистов более 3 лет</span>
-                </div>
-
-                <div class="stat">
-                <span class="stat__number">14</span>
-                <span class="stat__label">лет опыта в сфере Drupal</span>
-                </div>
-
-                <div class="stat">
-                <span class="stat__number">50+</span>
-                <span class="stat__label">модулей и тем в формате DrupalGive</span>
-                </div>
-
-                <div class="stat">
-                <span class="stat__number">90 000+</span>
-                <span class="stat__label">часов поддержки сайтов на Drupal</span>
-                </div>
-
-                <div class="stat">
-                <span class="stat__number">300</span>
-                <span class="stat__label">проектов на поддержке</span>
-                </div>
-            </div>
-        </div>
-        </div>
-
-        <!-- Мобильное меню -->
-        <nav class="nav nav--mobile">
-            <div class="mobile-container">
-              <h1>Поддержка<br>сайтов на DRUPAL</h1>
-              <p class="subtitle">
-                Сопровождение и поддержка сайтов на CMS DRUPAL любых версий и запущенности
-              </p>
-            </div>
-
-            <ul class="mobile-list">
-                <li class="mobile-item">
-                <a href="#">ПОДДЕРЖКА DRUPAL</a>
+                    </ul>
                 </li>
 
-                <!-- Администрирование -->
-                <li class="mobile-item mobile-item--expandable">
-                <button class="mobile-item__title">
-                    АДМИНИСТРИРОВАНИЕ
-                    <span class="arrow"></span>
-                </button>
-
-                <ul class="mobile-submenu">
-                    <li><a href="#">МИГРАЦИЯ</a></li>
-                    <li><a href="#">БЭКАПЫ</a></li>
-                    <li><a href="#">АУДИТ БЕЗОПАСТНОСТИ</a></li>
-                    <li><a href="#">ОПТИМИЗАЦИЯ СКОРОСТИ</a></li>
-                    <li><a href="#">ПЕРЕЕЗД НА HTTPS</a></li>
-                </ul>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">ПРОДВИЖЕНИЕ</a>
                 </li>
 
-                <li class="mobile-item">
-                <a href="#">ПРОДВИЖЕНИЕ</a>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">РЕКЛАМА</a>
                 </li>
 
-                <li class="mobile-item">
-                <a href="#">РЕКЛАМА</a>
+                <li class="nav__item nav__item--dropdown">
+                    <a href="#" class="nav__link">
+                        О НАС
+                        <div class="arrow"></div>
+                    </a>
+                    <ul class="dropdown">
+                        <li class="dropdown__item"><a href="#">КОМАНДА</a></li>
+                        <li class="dropdown__item"><a href="#">DRUPALGIVE</a></li>
+                        <li class="dropdown__item"><a href="#">БЛОГ</a></li>
+                        <li class="dropdown__item"><a href="#">КУРСЫ DRUPAL</a></li>
+                    </ul>
                 </li>
 
-                <!-- О нас -->
-                <li class="mobile-item mobile-item--expandable">
-                <button class="mobile-item__title">
-                    О НАС
-                    <span class="arrow"></span>
-                </button>
-
-                <ul class="mobile-submenu">
-                    <li><a href="#">КОМАНДА</a></li>
-                    <li><a href="#">DRUPALGIVE</a></li>
-                    <li><a href="#">БЛОГ</a></li>
-                    <li><a href="#">КУРСЫ DRUPAL</a></li>
-                </ul>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">ПРОЕКТЫ</a>
                 </li>
 
-                <li class="mobile-item">
-                <a href="#">ПРОЕКТЫ</a>
-                </li>
-
-                <li class="mobile-item">
-                <a href="#">КОНТАКТЫ</a>
+                <li class="nav__item">
+                    <a href="#" class="nav__link">КОНТАКТЫ</a>
                 </li>
             </ul>
-        <!-- Фиксированный нижний блок -->
-          <div class="mobile-footer">
-            <img src="images/end2.svg" alt="Logo" class="mobile-footer__logo">
-            <button class="burger">
-              <span></span>
-              <span></span>
-              <span></span>
-            </button>
-          </div>
         </nav>
-    </header>
+        <!-- Кнопка Меню -->
+        <button class="burger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </button>
+    </div>
+    <!-- Hero -->
+    <div class="hero">
+        <div class="hero__left">
+            <h1 class="hero__title">Поддержка<br>сайтов на DRUPAL</h1>
+            <p class="hero__text">
+            Сопровождение и поддержка сайтов<br>
+            на CMS DRUPAL любых версий и запущенности
+            </p>
+            <a href="#plans" class="hero__btn">ТАРИФЫ</a>
+        </div>
+        <!-- Блоки -->
+        <div class="hero__stats">
+            <div class="stat">
+            <span class="stat__number">#1<img src="images/end1.png" alt="Logo" class="hero__stats__logo"></span>
+            <span class="stat__label">Drupal-разработчик в России по версии Рейтинга Рунета</span>
+            </div>
+
+            <div class="stat">
+            <span class="stat__number">3+</span>
+            <span class="stat__label">средний опыт специалистов более 3 лет</span>
+            </div>
+
+            <div class="stat">
+            <span class="stat__number">14</span>
+            <span class="stat__label">лет опыта в сфере Drupal</span>
+            </div>
+
+            <div class="stat">
+            <span class="stat__number">50+</span>
+            <span class="stat__label">модулей и тем в формате DrupalGive</span>
+            </div>
+
+            <div class="stat">
+            <span class="stat__number">90 000+</span>
+            <span class="stat__label">часов поддержки сайтов на Drupal</span>
+            </div>
+
+            <div class="stat">
+            <span class="stat__number">300+</span>
+            <span class="stat__label">проектов на поддержке</span>
+            </div>
+        </div>
+    </div>
+  </header>  
   <!-- Основной контент -->
   <main class="main">
     <section class="section">
       <div class="container">
-        <h1>13 лет совершенствуем компетенции в Drupal поддержке!</h1>
-        <p class="subtitle">
+        <h1 class="service-title-main">13 лет совершенствуем компетенции в Drupal поддержке!</h1>
+        <p class="service-subtitle-main">
           Разрабатываем и оптимизируем модули, расширяем функциональность сайтов, обновляем дизайн.
         </p>
 
@@ -307,121 +223,112 @@
           <h1 class="page-title">Поддержка<br>от Drupal-coder</h1>
         </div>
         <div class="cards-wrapper">
-        <div class="container">
+          <div class="container">
             <div class="cards-grid">
-                <!-- Карточка 1 -->
-                <div class="card">
-                    <div class="card-number">01.</div>
-                    <h3 class="card-title">Постановка задачи по Email</h3>
-                    <p class="card-text">Удобная и привычная модель постановки задач, при которой задачи фиксируются и никогда не теряются.</p>
-                    <div class="card-icon">
-                        <!-- Вставьте свою иконку -->
-                        <img src="images/support1.svg" alt="Иконка">
-                    </div>
-                </div>
+              <!-- Карточка 1 -->
+              <div class="card">
+                  <div class="card-number">01.</div>
+                  <h3 class="card-title">Постановка задачи по Email</h3>
+                  <p class="card-text">Удобная и привычная модель постановки задач, при которой задачи фиксируются и никогда не теряются.</p>
+                  <div class="card-icon">
+                      <!-- Вставьте свою иконку -->
+                      <img src="images/support1.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 2 -->
-            <div class="card">
-                <div class="card-number">02.</div>
-                <h3 class="card-title">Система Helpdesk – отчетность, прозрачность</h3>
-                <p class="card-text">Возможность посмотреть все заявки в работе и отработанные часы в личном кабинете через браузер.</p>
-                <div class="card-icon">
-                    <img src="images/support2.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 2 -->
+              <div class="card">
+                  <div class="card-number">02.</div>
+                  <h3 class="card-title">Система Helpdesk – отчетность, прозрачность</h3>
+                  <p class="card-text">Возможность посмотреть все заявки в работе и отработанные часы в личном кабинете через браузер.</p>
+                  <div class="card-icon">
+                      <img src="images/support2.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 3 -->
-            <div class="card">
-                <div class="card-number">03.</div>
-                <h3 class="card-title">Расширенная техническая поддержка</h3>
-                <p class="card-text">Возможность организации расширенной техподдержки с 6:00 до 22:00 без выходных.</p>
-                <div class="card-icon">
-                    <img src="images/support3.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 3 -->
+              <div class="card">
+                  <div class="card-number">03.</div>
+                  <h3 class="card-title">Расширенная техническая поддержка</h3>
+                  <p class="card-text">Возможность организации расширенной техподдержки с 6:00 до 22:00 без выходных.</p>
+                  <div class="card-icon">
+                      <img src="images/support3.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 4 -->
-            <div class="card">
-                <div class="card-number">04.</div>
-                <h3 class="card-title">Персональный менеджер проекта</h3>
-                <p class="card-text">Ваш менеджер проекта всегда в курсе текущего состояния проекта и в любой момент готов ответить на любые вопросы.</p>
-                <div class="card-icon">
-                    <img src="images/support4.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 4 -->
+              <div class="card">
+                  <div class="card-number">04.</div>
+                  <h3 class="card-title">Персональный менеджер проекта</h3>
+                  <p class="card-text">Ваш менеджер проекта всегда в курсе текущего состояния проекта и в любой момент готов ответить на любые вопросы.</p>
+                  <div class="card-icon">
+                      <img src="images/support4.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 5 -->
-            <div class="card">
-                <div class="card-number">05.</div>
-                <h3 class="card-title">Удобные способы оплаты</h3>
-                <p class="card-text">Безналичный расчет по договору или электронные деньги: WebMoney, Яндекс.Деньги, PayPal.</p>
-                <div class="card-icon">
-                    <img src="images/support5.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 5 -->
+              <div class="card">
+                  <div class="card-number">05.</div>
+                  <h3 class="card-title">Удобные способы оплаты</h3>
+                  <p class="card-text">Безналичный расчет по договору или электронные деньги: WebMoney, Яндекс.Деньги, PayPal.</p>
+                  <div class="card-icon">
+                      <img src="images/support5.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 6 -->
-            <div class="card">
-                <div class="card-number">06.</div>
-                <h3 class="card-title">Работаем с SLA и NDA</h3>
-                <p class="card-text">Работа в рамках соглашений о конфиденциальности и об уровне качества работ.</p>
-                <div class="card-icon">
-                    <img src="images/support6.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 6 -->
+              <div class="card">
+                  <div class="card-number">06.</div>
+                  <h3 class="card-title">Работаем с SLA и NDA</h3>
+                  <p class="card-text">Работа в рамках соглашений о конфиденциальности и об уровне качества работ.</p>
+                  <div class="card-icon">
+                      <img src="images/support6.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 7 -->
-            <div class="card">
-                <div class="card-number">07.</div>
-                <h3 class="card-title">Штатные специалисты</h3>
-                <p class="card-text">Надежные штатные специалисты, никаких фрилансеров.</p>
-                <div class="card-icon">
-                    <img src="images/support7.svg" alt="Иконка">
-                </div>
-            </div>
+              <!-- Карточка 7 -->
+              <div class="card">
+                  <div class="card-number">07.</div>
+                  <h3 class="card-title">Штатные специалисты</h3>
+                  <p class="card-text">Надежные штатные специалисты, никаких фрилансеров.</p>
+                  <div class="card-icon">
+                      <img src="images/support7.svg" alt="Иконка">
+                  </div>
+              </div>
 
-            <!-- Карточка 8 -->
-            <div class="card">
-                <div class="card-number">08.</div>
-                <h3 class="card-title">Удобные каналы связи</h3>
-                <p class="card-text">Консультации по телефону, скайпу, в мессенджерах.</p>
-                <div class="card-icon">
-                    <img src="images/support8.svg" alt="Иконка">
-                </div>
+              <!-- Карточка 8 -->
+              <div class="card">
+                  <div class="card-number">08.</div>
+                  <h3 class="card-title">Удобные каналы связи</h3>
+                  <p class="card-text">Консультации по телефону, скайпу, в мессенджерах.</p>
+                  <div class="card-icon">
+                      <img src="images/support8.svg" alt="Иконка">
+                  </div>
+              </div>
             </div>
+          </div>
         </div>
     </section>
 
     <section class="black-section">
-      <div class="black-image">
-                <img src="images/laptop.png" alt="Экспертиза в Drupal">
-            </div>
+        <div class="black-image">
+            <img src="images/laptop.png" alt="Экспертиза в Drupal">
+        </div>
         <div class="black-content">
             <div class="black-text">
                 <h2 class="black-title">Экспертиза в Drupal,<br>опыт 14 лет!</h2>
-
                 <div class="text-blocks">
-                    <div class="text-block">
-                        <div class="text-block-content">Только системный подход - контрол версий, резервирование и тестирование!</div>
-                    </div>
-
-                    <div class="text-block">
-                        <div class="text-block-content">Только DRUPAL сайты, не берем на поддержку сайты на других CMS</div>
-                    </div>
-
-                    <div class="text-block">
-                        <div class="text-block-content">Участвуем в разработке ядра Drupal и модулей на Drupal.org, разрабатываем свои модули Drupal</div>
-                    </div>
-
-                    <div class="text-block">
-                        <div class="text-block-content">Поддерживаем сайты на Drupal 5, 6, 7 и 8</div>
-                    </div>
+                    <div class="text-block">Только системный подход - контрол версий, резервирование и тестирование!</div>
+                    <div class="text-block">Только DRUPAL сайты, не берем на поддержку сайты на других CMS</div>
+                    <div class="text-block">Участвуем в разработке ядра Drupal и модулей на Drupal.org, разрабатываем
+                      <a href="#cases" class="highlight-link">свои модули Drupal</a></div>
+                    <div class="text-block">Поддерживаем сайты на Drupal 5, 6, 7 и 8</div>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="plans">
+    <section class="plans" id="plans">
       <div class="container">
         <!-- Заголовок страницы -->
         <h1 class="plans-title">Тарифы</h1>
@@ -432,40 +339,41 @@
           <!-- Блок 1 -->
           <div class="plan-card">
             <div class="plan-name">Стартовый</div>
-            <div class="plan-description">
-              ✓ Консультации и работы по SEO </br>
-              ✓ Услуги дизайнера </br>
-              ✓ Неиспользованные оплаченные часы переносятся на следующий месяц</br>
-              ✓ предоплата от 6 000 рублей в месяц</br>
-            </div>
+            <ul class="plan-description">
+              <li>Консультации и работы по SEO</li>
+              <li>Услуги дизайнер</li>
+              <li>Неиспользованные оплаченные часы переносятся на следующий месяц</li>
+              <li>Предоплата от 6 000 рублей в месяц</li>
+            </ul>
             <button class="plan-button">СВЯЖИТЕСЬ С НАМИ!</button>
           </div>
 
           <!-- Блок 2 -->
           <div class="plan-card">
             <div class="plan-name">Бизнес</div>
-            <div class="plan-description">
-              ✓ Консультации и работы по SEO </br>
-              ✓ Услуги дизайнера </br>
-              ✓ Высокое время реакции - до 2 рабочих дней </br>
-              ✓ Неиспользованные оплаченные часы не переносятся </br>
-              ✓ Предоплата от 30 000 рублей в месяц </br>
-            </div>
+            <ul class="plan-description">
+              <li>Консультации и работы по SEO</li>
+              <li>Услуги дизайнера</li>
+              <li>Высокое время реакции - до 2 рабочих дней</li>
+              <li>Неиспользованные оплаченные часы не переносятся</li>
+              <li>Предоплата от 30 000 рублей в месяц</li>
+            </ul>
             <button class="plan-button">СВЯЖИТЕСЬ С НАМИ!</button>
           </div>
 
           <!-- Блок 3 -->
           <div class="plan-card">
             <div class="plan-name">VIP</div>
-            <div class="plan-description">
-              ✓ Консультации и работы по SEO </br>
-              ✓ Услуги дизайнера </br>
-              ✓ Максимальное время реацкии - в день обращения </br>
-              ✓ Неиспользованные оплаченные часы не переносятся </br>
-              ✓ Предоплата от 270 000 рублей вмесяц </br>
-            </div>
+            <ul class="plan-description">
+              <li>Консультации и работы по SEO</li>
+              <li>Услуги дизайнера</li>
+              <li>Максимальное время реакции - в день обращения</li>
+              <li>Неиспользованные оплаченные часы не переносятся</li>
+              <li>Предоплата от 270 000 рублей в месяц</li>
+            </ul>
             <button class="plan-button">СВЯЖИТЕСЬ С НАМИ!</button>
           </div>
+
         </div>
 
         <!-- Текст под блоками -->
@@ -480,7 +388,7 @@
       <div class="container">
 
         <!-- Заголовок страницы -->
-        <h1 class="team-title">Наша команда</h1>
+        <h1 class="team-title">Наши профессиональные разработчики выполняют быстро любые задачи</h1>
 
         <!-- Первый блок: три карточки с картинкой, названием и описанием -->
         <div class="team-grid">
@@ -502,7 +410,7 @@
 
           <div class="team-card">
             <img src="images/competency-22.svg" alt="Роль 3" class="team-card-image">
-            <div class="team-card-name">ль 8ч</div>
+            <div class="team-card-name">от 8ч</div>
             <div class="team-card-description">
               Интеграция модуля оплаты
             </div>
@@ -546,13 +454,13 @@
 
         <!-- Кнопка "Вся команда" -->
         <div class="team-footer">
-          <button class="team-button">Вся команда</button>
+          <button class="team-button">ВСЯ КОМАНДА</button>
         </div>
 
       </div>
     </section>
 
-    <section class="cases">
+    <section class="cases" id="cases">
       <div class="container">
 
         <!-- Заголовок -->
@@ -606,97 +514,129 @@
     <section class="reviews">
       <div class="container">
         <h1 class="reviews-title">Отзывы</h1>
-
         <!-- Все отзывы -->
-      <div class="review-cards-wrapper">
-        <div class="review-card" data-index="1">
-          <img src="images/logo_0.png" class="review-logo" alt="Логотип 1">
-          <div class="review-comment">
-            «Долго выбирали подрядчика для перезапуска нашего интернет-магазина, в итоге остановились на этой команде и 
-            не прогадали. Ребята не просто перенесли каталог, а полностью пересмотрели воронку продаж. Скорость загрузки
-            страниц по Google PageSpeed теперь в „зеленой зоне“, что сразу сказалось на позициях в поиске. Отдельное спасибо
-            менеджеру за терпение к нашим бесконечным правкам по корзине — довели всё до идеала!»
+        <div class="review-cards-wrapper">
+          <div class="review-card" data-index="1">
+            <img src="images/logo_0.png" class="review-logo" alt="Логотип 1">
+            <div class="review-comment">
+              «Долго выбирали подрядчика для перезапуска нашего интернет-магазина, в итоге остановились на этой команде и 
+              не прогадали. Ребята не просто перенесли каталог, а полностью пересмотрели воронку продаж. Скорость загрузки
+              страниц по Google PageSpeed теперь в „зеленой зоне“, что сразу сказалось на позициях в поиске. Отдельное спасибо
+              менеджеру за терпение к нашим бесконечным правкам по корзине — довели всё до идеала!»
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+              <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+              <span class="review-page current">1</span><span class="review-page total">/ 8</span>
+              <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
+            </div>
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
 
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_1.png" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Заказывали полный редизайн сервиса. Старый интерфейс был перегружен, пользователи путались в личном кабинете.
-            Дизайнеры компании провели крутой аудит, отрисовали современный и чис количество обращений в техподдержку с вопросом 
-            „где найти кнопку“ снизилось на 40%. Визуально проект теперь выглядит на миллион, очень довольны эстетикой и логикой переходов».
+          <div class="review-card" data-index="2" style="display:none;">
+            <img src="images/logo_1.png" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Заказывали полный редизайн сервиса. Старый интерфейс был перегружен, пользователи путались в личном кабинете.
+              Дизайнеры компании провели крутой аудит, отрисовали современный и чис количество обращений в техподдержку с вопросом 
+              „где найти кнопку“ снизилось на 40%. Визуально проект теперь выглядит на миллион, очень довольны эстетикой и логикой переходов».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button>
+            <span class="review-page current">2</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button>
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
-
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_2.png" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Работаем в нише со специфическими бизнес-процессами, поэтому готовые CMS нам не подходили. 
-            Команда реализовала для нас кастомную систему на Laravel. Интегрировали всё: от складского 
-            учета до CRM и сложных систем лояльности. Радует, что код чистый, архитектура масштабируемая — 
-            сейчас спокойно расширяем функционал без переписывания базы. Настоящие профи в бэкенде».
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
 
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_3.png" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Мало просто создать сайт, его нужно поддерживать. Мы сотрудничаем с ребятами в формате ежемесячного сопровождения.
-            Все обновления безопасности, верстка новых лендингов под акции, внедрение правок от SEO-специалистов — всё делается
-            в рамках спринтов без задержек. Очень ценю их системный подход: есть четкий таск-трекер, где я вижу статус каждой задачи в реальном времени».
+          <div class="review-card" data-index="3" style="display:none;">
+            <img src="images/logo_2.png" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Работаем в нише со специфическими бизнес-процессами, поэтому готовые CMS нам не подходили. 
+              Команда реализовала для нас кастомную систему на Laravel. Интегрировали всё: от складского 
+              учета до CRM и сложных систем лояльности. Радует, что код чистый, архитектура масштабируемая — 
+              сейчас спокойно расширяем функционал без переписывания базы. Настоящие профи в бэкенде».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">3</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
-
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_4.jpg" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Посмотрел ваш последний кейс по разработке приложения — архитектурное решение очень интересное.
-            Особенно порадовало, как вы решили вопрос с кэшированием данных при нестабильном интернете. Сейчас на
-            рынке мало кто так глубоко прорабатывает мобильную адаптацию и офлайн-режим. Для сложных финтех-проектов
-            вы, пожалуй, одна из сильнейших команд на текущий момент. Буду рекомендовать коллегам».
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
 
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_5.jpg" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Мы пока только на этапе прототипирования, но я уже в восторге от подхода. Ребята не начали рисовать макеты сразу,
-            а сначала провели серию интервью, изучили конкурентов и составили подробную карту путей пользователя (CJM). Теперь у нас есть
-            четкое понимание, каким должен быть проект, чтобы окупиться. Такой аналитический подход — редкость, обычно все хотят просто быстрее „наклепать“ страниц».
+          <div class="review-card" data-index="4" style="display:none;">
+            <img src="images/logo_3.png" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Мало просто создать сайт, его нужно поддерживать. Мы сотрудничаем с ребятами в формате ежемесячного сопровождения.
+              Все обновления безопасности, верстка новых лендингов под акции, внедрение правок от SEO-специалистов — всё делается
+              в рамках спринтов без задержек. Очень ценю их системный подход: есть четкий таск-трекер, где я вижу статус каждой задачи в реальном времени».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">4</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
-
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_6.png" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Реализовали с этой командой сложный внутренний портал для сотрудников. Нужно было объединить базу знаний, систему обучения и внутренний чат
-            с иерархией доступов. Сделали всё на высшем уровне. Сайт летает, навигация понятная даже для возрастных сотрудников. Отдельно отмечу обучение
-            наших админов после сдачи проекта — всё показали, записали видеоинструкции. Сервис на 10 из 10».
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
 
-        <div class="review-card" data-index="2" style="display:none;">
-          <img src="images/logo_7.png" class="review-logo" alt="Логотип 2">
-          <div class="review-comment">
-            «Для нас критически важно было запуститься к началу сезона. Был негативный опыт с фрилансерами, которые пропадали со связи, поэтому в этот раз
-            обратились в агентство. Небо и земля! Еженедельные созвоны, демонстрация демо-версий каждые две недели, прозрачная отчетность. В итоге выкатили
-            MVP даже на 3 дня раньше дедлайна. Спасибо за профессионализм и сохраненные нервные клетки!»
+          <div class="review-card" data-index="5" style="display:none;">
+            <img src="images/logo_4.jpg" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Посмотрел ваш последний кейс по разработке приложения — архитектурное решение очень интересное.
+              Особенно порадовало, как вы решили вопрос с кэшированием данных при нестабильном интернете. Сейчас на
+              рынке мало кто так глубоко прорабатывает мобильную адаптацию и офлайн-режим. Для сложных финтех-проектов
+              вы, пожалуй, одна из сильнейших команд на текущий момент. Буду рекомендовать коллегам».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">5</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
           </div>
-          <div class="review-text">Выражаем благодарность за предоставленную работу</div>
-        </div>
+          </div>
 
-          <!-- Навигация -->
-          <div class="review-pagination">
-            <button class="review-prev">&#8592;</button>
-            <span class="review-page">1 / 8</span>
-            <button class="review-next">&#8594;</button>
+          <div class="review-card" data-index="6" style="display:none;">
+            <img src="images/logo_5.jpg" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Мы пока только на этапе прототипирования, но я уже в восторге от подхода. Ребята не начали рисовать макеты сразу,
+              а сначала провели серию интервью, изучили конкурентов и составили подробную карту путей пользователя (CJM). Теперь у нас есть
+              четкое понимание, каким должен быть проект, чтобы окупиться. Такой аналитический подход — редкость, обычно все хотят просто быстрее „наклепать“ страниц».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">6</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
+          </div>
+          </div>
+
+          <div class="review-card" data-index="7" style="display:none;">
+            <img src="images/logo_6.png" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Реализовали с этой командой сложный внутренний портал для сотрудников. Нужно было объединить базу знаний, систему обучения и внутренний чат
+              с иерархией доступов. Сделали всё на высшем уровне. Сайт летает, навигация понятная даже для возрастных сотрудников. Отдельно отмечу обучение
+              наших админов после сдачи проекта — всё показали, записали видеоинструкции. Сервис на 10 из 10».
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">7</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
+          </div>
+          </div>
+
+          <div class="review-card" data-index="8" style="display:none;">
+            <img src="images/logo_7.png" class="review-logo" alt="Логотип 2">
+            <div class="review-comment">
+              «Для нас критически важно было запуститься к началу сезона. Был негативный опыт с фрилансерами, которые пропадали со связи, поэтому в этот раз
+              обратились в агентство. Небо и земля! Еженедельные созвоны, демонстрация демо-версий каждые две недели, прозрачная отчетность. В итоге выкатили
+              MVP даже на 3 дня раньше дедлайна. Спасибо за профессионализм и сохраненные нервные клетки!»
+            </div>
+            <div class="review-text">Выражаем благодарность за предоставленную работу</div>
+            <div class="review-pagination">
+            <button class="review-prev"></button> <!-- Заменили стрелку на галочку -->
+            <span class="review-page current">8</span><span class="review-page total">/ 8</span>
+            <button class="review-next"></button> <!-- Заменили стрелку на галочку -->
+          </div>
           </div>
         </div>
       </div>
@@ -759,52 +699,58 @@
         <!-- Вопрос 1 -->
         <div class="faq-item faq-item--highlight">
           <div class="faq-question">
-            <span class="faq-number">01.</span>
-            Как быстро вы начинаете работу над проектом?
+            <span class="faq-number">1.</span>
+            Кто непосредственно занимается поддержкой?
           </div>
           <div class="faq-description">
-            Мы приступаем к работе после согласования задач и подписания договора.
+            Сайты поддерживают штатные сотрудники ООО «Инитлаб», г. Краснодар, прошедшие
+            специальное обучение и имеющие опыт работы
+            с Друпал от 4 до 15 лет: 8 2 специалиста по SEO, 4 системных администратора.
           </div>
         </div>
 
         <!-- Остальные вопросы -->
         <div class="faq-item">
-          <span class="faq-number">02.</span>
-          С какими CMS вы работаете?
+          <div class="faq-question">
+            <span class="faq-number">2.</span>
+            С какими CMS вы работаете?
+          </div>
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">03.</span>
-          Предоставляете ли вы техническую поддержку?
+          <div class="faq-question">
+            <span class="faq-number">3.</span>
+            Предоставляете ли вы техническую поддержку?
+          </div>
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">04.</span>
+          <span class="faq-number">4.</span>
           Работаете ли вы по договору?
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">05.</span>
+          <span class="faq-number">5.</span>
           Можно ли доработать существующий сайт?
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">06.</span>
+          <span class="faq-number">6.</span>
           Какие сроки выполнения проектов?
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">07.</span>
+          <span class="faq-number">7.</span>
           Есть ли у вас SLA и NDA?
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">08.</span>
+          <span class="faq-number">8.</span>
           Как происходит постановка задач?
         </div>
 
         <div class="faq-item">
-          <span class="faq-number">09.</span>
+          <span class="faq-number">9.</span>
           Можно ли заказать срочные работы?
         </div>
 
@@ -836,8 +782,10 @@
         </p>
 
         <div class="webform-contacts">
-          <a href="tel:+79990000000" class="webform-phone">8 800 222-26-73</a>
-          <a href="mailto:info@example.ru" class="webform-email">info@drupal-coder.ru</a>
+          <a href="tel:+79990000000" class="webform-phone">
+            <img src="images/icon_1.png" alt="Phone" class="webform-icon">8 800 222-26-73</a>
+          <a href="mailto:info@example.ru" class="webform-email">
+            <img src="images/icon_2.png" alt="Email" class="webform-icon">info@drupal-coder.ru</a>
         </div>
 
         <form class="webform-form">
@@ -849,43 +797,46 @@
 
           <label class="webform-checkbox">
             <input type="checkbox" required>
-            <span>Отправляя заявку, я даю согласие на обработку своих персональных данных.*</span>
+            <span>Отправляя заявку, я даю согласие на <a href="https://example.com/privacy-policy" 
+              class="privacy-link">обработку персональных данных*</a>.</span>
           </label>
 
-          <!-- капча — подключишь сам -->
-          <div class="webform-captcha">
-            CAPTCHA
-          </div>
+          <!-- капча -->
+          <div class="g-recaptcha" data-sitekey="6LfYijksAAAAAM2eCIAOy6yQoq4XSjw7vF__ZxQ5"></div>
 
-          <button type="submit" class="webform-button">
-            СВЯЖИТЕСЬ С НАМИ
-          </button>
+          <button type="submit" class="webform-button">СВЯЖИТЕСЬ С НАМИ</button>
         </form>
 
         <div class="webform-divider"></div>
 
-        <footer class="footer">
-          <div class="footer-socials">
-            <a href="https://www.facebook.com/" class="footer-social"></a>
+      <footer class="footer">
+        <div class="footer-socials">
+          <a href="https://www.facebook.com/" class="footer-social">
             <img src="images/social_1.png" alt="footer-social">
-            <a href="https://vk.com/" class="footer-social"></a>
+          </a>
+          <a href="https://vk.com/" class="footer-social">
             <img src="images/social_4.webp" alt="footer-social">
-            <a href="https://web.telegram.org/" class="footer-social"></a>
+          </a>
+          <a href="https://web.telegram.org/" class="footer-social">
             <img src="images/sosial_2.webp" alt="footer-social">
-            <a href="https://www.youtube.com/" class="footer-social"></a>
+          </a>
+          <a href="https://www.youtube.com/" class="footer-social">
             <img src="images/social_3.png" alt="footer-social">
-          </div>
+          </a>
+        </div>
 
-          <div class="footer-text">
-            Проект ООО "Инитлаб", Краснодар, Россия.
-            Drupal является зарегистрированной торговой маркой Dries Buytaert
-          </div>
-        </footer>
+        <div class="footer-text">
+          Проект ООО "Инитлаб", Краснодар, Россия.
+          Drupal является зарегистрированной торговой маркой Dries Buytaert
+        </div>
+      </footer>
 
       </div>
     </section>
   </main>
   <!-- JavaScript -->
   <script src="js/main.js"></script>
+  <!-- Скрипт reCAPTCHA -->
+  <script src="https://www.google.com/recaptcha/api.js" async defer></script>
 </body>
 </html>

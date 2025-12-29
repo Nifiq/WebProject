@@ -1,80 +1,68 @@
 document.addEventListener('DOMContentLoaded', () => {
   const burger = document.querySelector('.burger');
-  const closeBurger = document.querySelector('.burger--close');
-  const mobileNav = document.querySelector('.nav--mobile');
-  const submenuButtons = document.querySelectorAll('.mobile-item__title');
+  const nav = document.querySelector('.nav');
+  const body = document.body;
 
-  if (burger && mobileNav) {
+  if (!nav) return;
+
+  // --- Burger: open/close mobile menu ---
+  if (burger) {
     burger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      lockScroll(); // Скрол
-      mobileNav.classList.add('is-open');
+      e.preventDefault();
+      nav.classList.toggle('nav--open');
+      body.classList.toggle('no-scroll', nav.classList.contains('nav--open'));
     });
   }
 
-  if (closeBurger && mobileNav) {
-    closeBurger.addEventListener('click', (e) => {
-      e.stopPropagation();
-      mobileNav.classList.remove('is-open');
-      unlockScroll(); // Скрол
-    });
-  }
-
-  submenuButtons.forEach(button => {
-    button.addEventListener('click', (e) => {
-      e.stopPropagation();
-      const parentItem = button.closest('.mobile-item');
-      if (!parentItem) return;
-      parentItem.classList.toggle('is-open');
-    });
-  });
-
-  // Скрол
-  let scrollPosition = 0;
-  function lockScroll() {
-    scrollPosition = window.scrollY;
-    document.body.classList.add('is-locked');
-    document.body.style.top = `-${scrollPosition}px`;
-  }
-  function unlockScroll() {
-    document.body.classList.remove('is-locked');
-    document.body.style.top = '';
-    window.scrollTo(0, scrollPosition);
-  }
-
-  // ===== Функциональность отзывов =====
-  const reviews = document.querySelectorAll(".review-card");
-  const prevBtn = document.querySelector(".review-prev");
-  const nextBtn = document.querySelector(".review-next");
-  const pageIndicator = document.querySelector(".review-page");
-
-  let currentIndex = 0; // текущий отзыв
-
-  const updateReviewDisplay = () => {
-    reviews.forEach((review, index) => {
-      review.style.display = index === currentIndex ? "block" : "none";
-    });
-    if (pageIndicator) {
-      pageIndicator.textContent = `${currentIndex + 1} / ${reviews.length}`;
-    }
+  // Helper: close all dropdowns
+  const closeAllDropdowns = () => {
+    nav.querySelectorAll('.nav__item--dropdown.open').forEach((li) => li.classList.remove('open'));
   };
 
-  // Начальное отображение
-  if (reviews.length > 0) {
-    updateReviewDisplay();
-  }
+  // --- Dropdowns: click to toggle on mobile ---
+  nav.addEventListener('click', (e) => {
+    const link = e.target.closest('.nav__item--dropdown > .nav__link');
+    if (!link) return;
 
-  if (prevBtn) {
-    prevBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex - 1 + reviews.length) % reviews.length;
-      updateReviewDisplay();
-    });
-  }
+    // Only intercept click for submenu parents (esp. on mobile)
+    // Prevent jumping to "#" and stop bubbling to document
+    e.preventDefault();
+    e.stopPropagation();
 
-  if (nextBtn) {
-    nextBtn.addEventListener("click", () => {
-      currentIndex = (currentIndex + 1) % reviews.length;
-      updateReviewDisplay();
-    });
-  }
+    const item = link.closest('.nav__item--dropdown');
+    if (!item) return;
+
+    // Close others, toggle current
+    const willOpen = !item.classList.contains('open');
+    closeAllDropdowns();
+    if (willOpen) item.classList.add('open');
+  });
+
+  // Click outside: close dropdowns and (optionally) mobile menu
+  document.addEventListener('click', (e) => {
+    const clickInsideNav = nav.contains(e.target);
+    const clickOnBurger = burger ? burger.contains(e.target) : false;
+
+    if (!clickInsideNav && !clickOnBurger) {
+      closeAllDropdowns();
+      // Do NOT force-close the mobile menu here — matches your current behaviour (only burger closes it)
+    }
+  });
+
+  // Esc: close dropdowns + mobile menu
+  document.addEventListener('keydown', (e) => {
+    if (e.key !== 'Escape') return;
+    closeAllDropdowns();
+    nav.classList.remove('nav--open');
+    body.classList.remove('no-scroll');
+  });
+
+  // Resize to desktop: clear mobile-only states
+  window.addEventListener('resize', () => {
+    if (window.matchMedia('(min-width: 1024px)').matches) {
+      closeAllDropdowns();
+      nav.classList.remove('nav--open');
+      body.classList.remove('no-scroll');
+    }
+  });
 });
