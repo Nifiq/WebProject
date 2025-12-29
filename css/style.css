@@ -1079,6 +1079,7 @@ h1 {
 }
 /* ===== Седьмая страница ===== */
 /* ===== Секция Партнеры ===== */
+/* ===== Секция Партнеры ===== */
 .partners {
   padding: 80px 16px;
   text-align: center;
@@ -1114,8 +1115,8 @@ h1 {
 
 .partners-track {
   display: flex;
-  gap: 40px;
-  width: max-content;
+  gap: 80px;
+  width: 150%;
   animation: moveLeft 30s linear infinite;
 }
 
@@ -1124,8 +1125,8 @@ h1 {
 }
 
 .partners-track img {
-  height: 90px;
-  width: 90px;
+  height: 140px;
+  width: 140px;
   object-fit: contain;
 }
 /* Анимации */
@@ -1472,6 +1473,7 @@ body::after {
     opacity: 1;
   }
   /* ===== <!-- Навигация --> ===== */
+  
     .burger {
         display: none; /* Скрываем бургер на десктопе */
     }
@@ -1489,15 +1491,18 @@ body::after {
     }
 
     .nav__link {
-        font-size: 18px;
-        max-width: 200px;
-        display: block;
+      padding: 12px 18px; 
+      font-size: 18px;
+      max-width: 300px;
+      display: block;
     }
 
     /* Подменю всегда видно на десктопе */
     .nav__item--dropdown .dropdown {
         display: block;
         position: absolute;
+        min-width: 260px;
+        width: max-content;
         top: 100%;
         left: 0;
         background-color: rgba(0, 0, 0, 0.9);
@@ -1824,5 +1829,129 @@ body::after {
     background-color: transparent; /* keep same black menu background */
     padding-left: 16px;
     margin-top: 10px;
+  }
+}
+@media (min-width: 1024px){
+
+  /* освобождаем меньше места справа */
+  .review-card{
+    padding-right: 260px; /* было 320 — делаем компактнее */
+  }
+
+  .review-text{
+    text-align: left;
+    margin-top: 20px;
+  }
+
+  .review-text::after{
+    display: none;
+  }
+
+  /* Пагинация: левее и аккуратнее */
+  .review-pagination{
+    position: absolute;
+    top: 50%;
+    right: 146px;                 /* ← сдвиг стрелок ЛЕВЕЕ */
+    transform: translateY(-50%);
+
+    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+
+    /* убираем старую линию */
+    border-left: none;
+    padding-left: 0;
+  }
+
+  /* Рисуем вертикальную серую линию отдельно и короче */
+  .review-pagination::before{
+    content: '';
+    position: absolute;
+    left: -92px;                /* линия слева от стрелок */
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2px;
+    height: 190px;               /* ← ВЫСОТА линии (можно 80–120) */
+    background-color: #d1d5db;
+  }
+}
+@media (min-width: 1024px){
+
+  /* расширяем контейнер формы на ПК */
+  .webform-inner{
+    max-width: 1100px;
+    margin: 0 auto;
+
+    /* две колонки */
+    display: grid;
+    grid-template-columns: 1fr 1fr;  /* левая | правая */
+    column-gap: 64px;
+    align-items: start;
+  }
+
+  /* левая колонка */
+  .webform-title,
+  .webform-text,
+  .webform-contacts{
+    grid-column: 1;
+  }
+
+  /* правая колонка: форма “сверху”, рядом с заголовком */
+  .webform-form{
+    grid-column: 2;
+    grid-row: 1 / span 3;
+  }
+
+  /* выравниваем заголовок/текст слева на ПК */
+  .webform-title{
+    text-align: left;
+    margin-top: 0;
+  }
+
+  .webform-text{
+    text-align: left;
+  }
+
+  /* divider и footer НЕ должны уходить в колонки — всегда во всю ширину */
+  .webform-divider,
+  .footer{
+    grid-column: 1 / -1;
+  }
+}
+/* ===== Секция Партнеры ===== */
+/* ===== Partners: центрирование на ПК ===== */
+@media (min-width: 1024px){
+
+  .partners{
+    text-align: center;
+  }
+
+  /* если есть внутренний контейнер */
+  .partners .container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;   /* центрируем всё */
+  }
+
+  /* заголовок */
+  .partners-title{
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* текст под заголовком */
+  .partners-text{
+    text-align: center;      /* чтобы текст не прилипал влево */
+    margin-left: auto;
+    margin-right: auto;
+    max-width: 900px;        /* чтобы строка выглядела красиво на широком экране */
+  }
+
+  /* блок с анимацией логотипов */
+  .partners-logos,
+  .partners-slider,
+  .partners-animation{
+    justify-content: center;
   }
 }

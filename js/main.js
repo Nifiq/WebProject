@@ -66,3 +66,45 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 });
+document.addEventListener('DOMContentLoaded', function () {
+  const reviewsSection = document.querySelector('.reviews');
+  if (!reviewsSection) return;
+
+  const wrapper = reviewsSection.querySelector('.review-cards-wrapper');
+  const cards = Array.from(reviewsSection.querySelectorAll('.review-card'));
+  if (!wrapper || cards.length === 0) return;
+
+  // Находим текущую видимую карточку (если ни одна не видима — показываем первую)
+  let current = cards.findIndex(card => {
+    // inline style display:none; или рассчитанное значение
+    return getComputedStyle(card).display !== 'none';
+  });
+  if (current === -1) current = 0;
+
+  function showCard(index) {
+    cards.forEach((card, i) => {
+      card.style.display = (i === index) ? 'block' : 'none';
+    });
+    current = index;
+  }
+
+  // гарантируем, что стартовая карточка отображается корректно
+  showCard(current);
+
+  wrapper.addEventListener('click', function (e) {
+    const nextBtn = e.target.closest('.review-next');
+    const prevBtn = e.target.closest('.review-prev');
+
+    if (!nextBtn && !prevBtn) return;
+
+    e.preventDefault();
+
+    if (nextBtn) {
+      const nextIndex = (current + 1) % cards.length;
+      showCard(nextIndex);
+    } else if (prevBtn) {
+      const prevIndex = (current - 1 + cards.length) % cards.length;
+      showCard(prevIndex);
+    }
+  });
+});
